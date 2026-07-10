@@ -33,5 +33,13 @@ DEFAULT_TEMPERATURE = 0.5
 
 DEFAULT_REASONING_EFFORT = "medium"
 
+THINKING_CONFIG = {
+    "thinking": {
+        "type": "enabled"
+    }
+}
+
+
+
 PAGE_TITLE = "ChatBot"
 PAGE_ICON = "🤖"

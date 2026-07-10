@@ -9,6 +9,7 @@ from app.config.settings import (
 
 from app.prompts.chatbot_prompt import get_chat_prompt
 from langchain_openai import ChatOpenAI
+from app.services.llm_service import create_chat_model
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 import streamlit as st
 
@@ -50,18 +51,7 @@ with st.sidebar:
     st.caption(f"• Modelo: {model_name}")
     
     # Crear el modelo de chat con la configuración seleccionada
-    chat_model = ChatOpenAI(
-    model=model_name,
-    api_key=API_KEY_DEEPSEEK,
-    base_url=BASE_URL,
-    temperature=temperature,
-    reasoning_effort=DEFAULT_REASONING_EFFORT,
-    extra_body={
-            "thinking": {
-                "type": "enabled"
-            }
-        } 
-    )
+    chat_model = create_chat_model(model_name=model_name, temperature=temperature)
 
    
     if st.button('🧾Nuevo chat', use_container_width=True):
@@ -76,10 +66,10 @@ with st.sidebar:
 if 'mensajes' not in st.session_state:
     st.session_state.mensajes = []
     
-prompt_template = get_chat_prompt()
+chat_prompt = get_chat_prompt()
     
 # crear cadena usando LCEL
-cadena = prompt_template | chat_model
+cadena = chat_prompt | chat_model
     
 # Mostrar el mensaje en la interfaz
 for msg in st.session_state.mensajes:
