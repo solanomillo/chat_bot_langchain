@@ -11,6 +11,7 @@ from app.prompts.chatbot_prompt import get_chat_prompt
 from langchain_openai import ChatOpenAI
 from app.services.llm_service import create_chat_model
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
+from app.services.chat_service import stream_chat_response
 import streamlit as st
 
 
@@ -96,8 +97,12 @@ if pregunta:
             full_response = ""
  
             # ¡Aquí está la magia del streaming!
-            for chunk in cadena.stream({"mensaje": pregunta, "historial": st.session_state.mensajes}):
-                full_response += chunk.content
+            for chunk in stream_chat_response(
+                chain=cadena,
+                question=pregunta,
+                history=st.session_state.mensajes,
+            ):
+                full_response += chunk
                 response_placeholder.markdown(full_response + "▌")  # El cursor parpadeante
             
             response_placeholder.markdown(full_response)
