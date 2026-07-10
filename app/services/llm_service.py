@@ -14,10 +14,15 @@ from app.config.settings import (
     THINKING_CONFIG
 )
 import logging
+from langsmith import traceable
 
 logger = logging.getLogger(__name__)
 
 
+
+@traceable(
+    name="Create Chat Model"
+)
 def create_chat_model(
     model_name: str,
     temperature: float,

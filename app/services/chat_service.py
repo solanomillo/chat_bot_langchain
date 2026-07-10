@@ -5,13 +5,16 @@ Responsabilidad:
     Gestionar la comunicación con la cadena de LangChain.
 """
 from collections.abc import Iterator
-from langchain_core.output_parsers import StrOutputParser
 from langchain_core.messages import BaseMessage
 import logging
+from langsmith import traceable
 
 logger = logging.getLogger(__name__)
 
 
+@traceable(
+    name="Chat Response"
+)
 def stream_chat_response(
     chain,
     question: str,    

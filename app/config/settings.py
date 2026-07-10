@@ -39,7 +39,21 @@ THINKING_CONFIG = {
     }
 }
 
+# ==========================
+# LangSmith
+# ==========================
 
+LANGSMITH_API_KEY = os.getenv("LANGSMITH_API_KEY")
+
+LANGSMITH_TRACING = os.getenv(
+    "LANGSMITH_TRACING",
+    "false",
+)
+
+LANGSMITH_PROJECT = os.getenv(
+    "LANGSMITH_PROJECT",
+    "basic-chatbot",
+)
 
 PAGE_TITLE = "ChatBot"
 PAGE_ICON = "🤖"
