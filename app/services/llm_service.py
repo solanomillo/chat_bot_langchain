@@ -13,6 +13,9 @@ from app.config.settings import (
     DEFAULT_REASONING_EFFORT,
     THINKING_CONFIG
 )
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def create_chat_model(
@@ -29,7 +32,10 @@ def create_chat_model(
     Returns:
         Instancia configurada de ChatOpenAI.
     """
-
+    logger.info(
+        "Inicializando modelo %s",
+        model_name,
+    )
     return ChatOpenAI(
         model=model_name,
         api_key=API_KEY_DEEPSEEK,

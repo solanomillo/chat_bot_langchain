@@ -6,15 +6,19 @@ Responsabilidad:
 """
 
 import streamlit as st
-
 from app.config.settings import PAGE_ICON, PAGE_TITLE
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def configure_page() -> None:
     """
     Configura la página principal de Streamlit.
     """
-
+    logger.info(
+        "Aplicación iniciada."
+    )
     st.set_page_config(
         page_title=PAGE_TITLE,
         page_icon=PAGE_ICON,

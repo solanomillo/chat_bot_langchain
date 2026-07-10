@@ -7,6 +7,12 @@ from langchain_core.messages import (
 from app.services.chat_service import stream_chat_response
 import streamlit as st
 
+from app.ui.session import (
+    add_ai_message, 
+    add_user_message,
+    get_conversation_history
+)
+
 
 def render_chat_history(
     messages: list[BaseMessage],
@@ -64,7 +70,7 @@ def handle_chat(
         for chunk in stream_chat_response(
             chain=chain,
             question=question,
-            history=st.session_state.mensajes,
+            history=get_conversation_history(),
         ):
 
             full_response += chunk
@@ -75,10 +81,6 @@ def handle_chat(
 
         placeholder.markdown(full_response)
 
-    st.session_state.mensajes.append(
-        HumanMessage(content=question)
-    )
+    add_user_message(question)
 
-    st.session_state.mensajes.append(
-        AIMessage(content=full_response)
-    )
+    add_ai_message(full_response)

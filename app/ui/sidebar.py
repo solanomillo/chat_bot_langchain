@@ -6,12 +6,17 @@ Responsabilidad:
 """
 
 import streamlit as st
-
 from app.config.settings import (
     AVAILABLE_MODELS,
     DEFAULT_MODEL,
     DEFAULT_TEMPERATURE,
 )
+from app.ui.session import (
+    clear_conversation,
+)
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def render_sidebar() -> tuple[str, float]:
@@ -53,8 +58,11 @@ def render_sidebar() -> tuple[str, float]:
         if st.button(
             "🧾 Nuevo chat",
             use_container_width=True,
-        ):
-            st.session_state.mensajes = []
+        ): 
+            clear_conversation()
             st.rerun()
-
+            
+        logger.info(
+            "Nueva conversación iniciada."
+        )
     return model_name, temperature

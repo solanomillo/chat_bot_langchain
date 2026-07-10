@@ -7,7 +7,9 @@ Responsabilidad:
 from collections.abc import Iterator
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.messages import BaseMessage
+import logging
 
+logger = logging.getLogger(__name__)
 
 
 def stream_chat_response(
@@ -26,7 +28,9 @@ def stream_chat_response(
     Yields:
         Fragmentos de texto generados por el modelo.
     """
-    
+    logger.info(
+        "Generando respuesta..."
+    )
     for chunk in chain.stream(
         {
             "mensaje": question,
