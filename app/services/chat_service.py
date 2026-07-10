@@ -26,12 +26,8 @@ def stream_chat_response(
     Yields:
         Fragmentos de texto generados por el modelo.
     """
-
-    parser = StrOutputParser()
-
-    stream_chain = chain | parser
-
-    for chunk in stream_chain.stream(
+    
+    for chunk in chain.stream(
         {
             "mensaje": question,
             "historial": history,

@@ -1,3 +1,4 @@
+from app.chains.chat_chains import create_chat_chain
 from app.config.settings import (
     API_KEY_DEEPSEEK,
     BASE_URL,
@@ -8,7 +9,6 @@ from app.config.settings import (
 )
 
 from app.prompts.chatbot_prompt import get_chat_prompt
-from langchain_openai import ChatOpenAI
 from app.services.llm_service import create_chat_model
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from app.services.chat_service import stream_chat_response
@@ -70,7 +70,10 @@ if 'mensajes' not in st.session_state:
 chat_prompt = get_chat_prompt()
     
 # crear cadena usando LCEL
-cadena = chat_prompt | chat_model
+chat_chain = create_chat_chain(
+    prompt=chat_prompt,
+    llm=chat_model,
+)
     
 # Mostrar el mensaje en la interfaz
 for msg in st.session_state.mensajes:
@@ -98,7 +101,7 @@ if pregunta:
  
             # ¡Aquí está la magia del streaming!
             for chunk in stream_chat_response(
-                chain=cadena,
+                chain=chat_chain,
                 question=pregunta,
                 history=st.session_state.mensajes,
             ):
