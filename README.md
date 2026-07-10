@@ -325,9 +325,9 @@ Si encuentras algún problema o tienes una mejora, puedes abrir un Issue o envia
 ---
 
 # 📝 Licencia
-Este proyecto está bajo la Licencia MIT. Para más detalles, consulta el archivo [LICENSE](https://github.com/solanomillo/clinic-ai-agent?tab=MIT-1-ov-file) adjunto en este repositorio.
+Este proyecto está bajo la Licencia MIT. Para más detalles, consulta el archivo [LICENSE](https://github.com/solanomillo/chat_bot_langchain/tree/main?tab=MIT-1-ov-file) adjunto en este repositorio.
 
-Copyright © 2026 [julio cesar solano ](https://github.com/solanomillo/clinic-ai-agent?tab=MIT-1-ov-file) - Backend Developer.
+Copyright © 2026 [julio cesar solano ](hhttps://github.com/solanomillo/chat_bot_langchain/tree/main?tab=MIT-1-ov-file) - Backend Developer.
 
 ---
 
