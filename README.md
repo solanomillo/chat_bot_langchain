@@ -66,32 +66,46 @@ La aplicación sigue una arquitectura por capas donde cada módulo tiene una ún
 # 📂 Estructura del proyecto
 
 ```text
-app/
+chat_bot_langchain/
 │
-├── chains/
-│   └── chat_chain.py
+├── app/
+│   ├── __init__.py
+│   ├── app.py
+│   │
+│   ├── chains/
+│   │   ├── __init__.py
+│   │   └── chat_chain.py
+│   │
+│   ├── config/
+│   │   ├── __init__.py
+│   │   └── settings.py
+│   │
+│   ├── prompts/
+│   │   ├── __init__.py
+│   │   └── chatbot_prompt.py
+│   │
+│   ├── services/
+│   │   ├── __init__.py
+│   │   ├── chat_service.py
+│   │   ├── llm_service.py
+│   │   └── langsmith_service.py
+│   │
+│   ├── ui/
+│   │   ├── __init__.py
+│   │   ├── chat.py
+│   │   ├── page.py
+│   │   ├── session.py
+│   │   └── sidebar.py
+│   │
+│   └── utils/
+│       ├── __init__.py
+│       └── logger.py
 │
-├── config/
-│   └── settings.py
-│
-├── prompts/
-│   └── chatbot_prompt.py
-│
-├── services/
-│   ├── chat_service.py
-│   ├── llm_service.py
-│   └── langsmith_service.py
-│
-├── ui/
-│   ├── chat.py
-│   ├── page.py
-│   ├── session.py
-│   └── sidebar.py
-│
-├── utils/
-│   └── logger.py
-│
-└── app.py
+├── .env
+├── .gitignore
+├── requirements.txt
+├── README.md
+└── LICENSE
 ```
 
 ---
@@ -247,42 +261,21 @@ Esto permite ofrecer mensajes amigables al usuario mientras los detalles técnic
 
 ---
 
-# 📈 Flujo de ejecución
+## 📊 Flujo de la Aplicación
 
-```
-Usuario
-
-↓
-
-Interfaz Streamlit
-
-↓
-
-Sidebar
-
-↓
-
-Configuración del modelo
-
-↓
-
-Prompt
-
-↓
-
-Cadena LCEL
-
-↓
-
-DeepSeek
-
-↓
-
-Streaming
-
-↓
-
-Respuesta
+```mermaid
+graph TD
+    A[Usuario] --> B[Streamlit UI]
+    B --> C[Sidebar Config]
+    B --> D[Chat Interface]
+    C --> E[Configuración Modelo]
+    D --> F[Prompt Template]
+    F --> G[Cadena LCEL]
+    G --> H[DeepSeek API]
+    H --> I[Streaming]
+    I --> J[Respuesta]
+    J --> K[Historial]
+    K --> D
 ```
 
 ---
