@@ -131,9 +131,9 @@ Durante el desarrollo se aplicaron principios de ingeniería de software como:
 ## 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/TU_USUARIO/basic-chatbot.git
+https://github.com/solanomillo/chat_bot_langchain.git
 
-cd basic-chatbot
+cd chat_bot_langchain
 ```
 
 ---
