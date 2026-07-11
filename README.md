@@ -41,7 +41,7 @@ El objetivo principal no fue únicamente construir un chatbot funcional, sino de
 # 🏛 Arquitectura
 
 ```
-Usuario
+   Usuario
       │
       ▼
  Streamlit UI
@@ -206,17 +206,9 @@ streamlit run app.py
 
 # 🖥 Interfaz
 
-Aquí puedes colocar capturas de pantalla o un GIF del funcionamiento.
-
-```
-images/
-
-chat.png
-
-sidebar.png
-
-demo.gif
-```
+![Interfaz_uno](assets/imagen_1.png)
+![Interfaz_dos](assets/imagen_2.png)
+![Interfaz_tres](assets/imagen_3.png)
 
 ---
 
